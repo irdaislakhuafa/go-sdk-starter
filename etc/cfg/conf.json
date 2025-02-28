@@ -1,0 +1,59 @@
+{
+  "Meta": {
+    "Title": "Go SDK Starter App.",
+    "Description": "Starter project for https://github.com/irdaislakhuafa/go-sdk",
+    "Version": "v0.0.01",
+    "Protocol": "http",
+    "Port": "8001",
+    "Host": "127.0.0.1",
+    "BasePath": "/"
+  },
+  "Fiber": {
+    "Port": "8001",
+    "TimeoutSeconds": 100,
+    "Mode": "dev",
+    "Cors": {
+      "PreferDefault": false,
+      "Origins": [
+        "*"
+      ],
+      "Methods": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "Headers": [
+        "Authorization",
+        "Content-Type"
+      ],
+      "Cookies": false
+    }
+  },
+  "Log": {
+    "Level": "debug"
+  },
+  "DB": {
+    "Master": {
+      "Username": "root",
+      "Password": "",
+      "Host": "127.0.0.1",
+      "Port": "3306",
+      "Name": "starter_app",
+      "Ssl": false
+    }
+  },
+  "SMTP": {
+    "Username": "",
+    "Password": "",
+    "Host": "",
+    "Port": 0
+  },
+  "Token": {
+    "ExpirationMinutes": 43200
+  },
+  "Contacts": {
+    "Name": "",
+    "Email": ""
+  }
+}
