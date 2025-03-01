@@ -23,32 +23,29 @@
       system:
       let
         pkgs = import inputs.nixpkgs { inherit system; };
+        minimalPkgs = [
+          pkgs.gopls
+          pkgs.gotools
+        ];
+        devEnv = {
+          COLORTERM = "truecolor";
+        };
       in
       {
         inherit self;
         devShells = {
           ide = pkgs.mkShell {
-            buildInputs = [
-              pkgs.gopls
+            buildInputs = minimalPkgs ++ [
               pkgs.go
-              pkgs.gotools
-              inputs.scls.defaultPackage.${system}
               pkgs.helix
+              inputs.scls.defaultPackage.${system}
             ];
-            env = {
-              COLORTERM = "truecolor";
-            };
+            env = devEnv;
             shellHook = '''';
           };
           ide-minimal = pkgs.mkShell {
-            buildInputs = [
-              pkgs.gopls
-              pkgs.gotools
-              pkgs.helix
-            ];
-            env = {
-              COLORTERM = "truecolor";
-            };
+            buildInputs = minimalPkgs;
+            env = devEnv;
             shellHook = '''';
           };
         };
