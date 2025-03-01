@@ -9,6 +9,7 @@ import (
 	"github.com/irdaislakhuafa/go-sdk/files"
 	"github.com/irdaislakhuafa/go-sdk/log"
 	"github.com/irdaislakhuafa/go-sdk/smtp"
+	"github.com/irdaislakhuafa/go-sdk/storage"
 )
 
 type AppMode string
@@ -70,6 +71,7 @@ type (
 		SMTP     smtp.Config
 		Log      log.Config
 		DB       DB
+		Storage  storage.Config
 		Token    Token
 		Contacts Contacts
 	}
