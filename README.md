@@ -91,10 +91,12 @@ This setup only contains:
 - `gotools`
 
 
-After that you can your project using `helix`.
+After that you can open your project using `helix`.
 ```bash
 $ hx .
 ```
+
+Or using any IDE that you like.
 
 ### Run and Build
 Build your app.
@@ -118,5 +120,9 @@ $ docker compose up app-prod -d
 Depends about your [docker-compose](./docker-compose.yaml) configurations.
 
 ## Todo
+
+[x] Setup nix flake
+[x] Setup SQL Query Builder using sqlc.
+[x] Setup for Rest API
 [ ] Setup for GraphQL
 [ ] Setup for gRPC 
