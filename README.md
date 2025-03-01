@@ -121,8 +121,8 @@ Depends about your [docker-compose](./docker-compose.yaml) configurations.
 
 ## Todo
 
-[x] Setup nix flake
-[x] Setup SQL Query Builder using sqlc.
-[x] Setup for Rest API
-[ ] Setup for GraphQL
-[ ] Setup for gRPC 
+- [x] Setup nix flake
+- [x] Setup SQL Query Builder using sqlc.
+- [x] Setup for Rest API
+- [ ] Setup for GraphQL
+- [ ] Setup for gRPC 
