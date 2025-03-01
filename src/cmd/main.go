@@ -15,6 +15,7 @@ import (
 	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/connection"
 	"github.com/irdaislakhuafa/go-sdk/log"
 	"github.com/irdaislakhuafa/go-sdk/smtp"
+	"github.com/irdaislakhuafa/go-sdk/storage"
 )
 
 const (
@@ -42,6 +43,12 @@ func main() {
 		validator.WithRequiredStructEnabled(),
 	)
 
+	// initialize storage client
+	s, err := storage.InitMinio(cfg.Storage)
+	if err != nil {
+		panic(err)
+	}
+
 	// initialize queries
 	q := entitygen.New(db)
 
@@ -49,10 +56,10 @@ func main() {
 	smtpGoMail := smtp.InitGoMail(cfg.SMTP)
 
 	// initialize domain
-	dom := domain.Init(l, q, db)
+	dom := domain.Init(l, q, db, s)
 
 	// initialize usecase
-	uc := usecase.Init(l, cfg, v, dom, smtpGoMail)
+	uc := usecase.Init(l, cfg, v, dom, smtpGoMail, s)
 
 	// choose running mode
 	mode := flag.String("mode", "rest", "Please select running mode: [rest, gql, grpc]")

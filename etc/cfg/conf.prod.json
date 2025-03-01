@@ -49,6 +49,16 @@
     "Host": "",
     "Port": 0
   },
+  "Storage": {
+    "BaseDir": "starter_app",
+    "Host": "127.0.0.1",
+    "Port": "9000",
+    "AccessKeyID": "",
+    "AccessKeySecret": "",
+    "Token": "",
+    "Region": "",
+    "MaxRetries": 1
+  },
   "Token": {
     "ExpirationMinutes": 43200
   },

@@ -126,3 +126,4 @@ Depends about your [docker-compose](./docker-compose.yaml) configurations.
 - [x] Setup for Rest API
 - [ ] Setup for GraphQL
 - [ ] Setup for gRPC 
+- [x] Setup for Minio Object Storage
