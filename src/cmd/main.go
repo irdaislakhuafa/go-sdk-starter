@@ -44,7 +44,7 @@ func main() {
 	)
 
 	// initialize storage client
-	s, err := storage.InitMinio(cfg.Storage)
+	s, err := storage.Init(cfg.Storage)
 	if err != nil {
 		panic(err)
 	}

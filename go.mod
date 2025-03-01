@@ -7,7 +7,7 @@ require (
 	github.com/go-sql-driver/mysql v1.9.0
 	github.com/gofiber/fiber/v2 v2.52.6
 	github.com/google/uuid v1.6.0
-	github.com/irdaislakhuafa/go-sdk v0.0.24
+	github.com/irdaislakhuafa/go-sdk v0.0.25
 )
 
 require (
