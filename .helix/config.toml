@@ -52,6 +52,8 @@ enable = true
 center = ["file-name"]
 left = ["mode", "spinner"]
 right = [
+    "file-modification-indicator",
+    "read-only-indicator",
     "diagnostics",
     "selections",
     "position",
@@ -74,6 +76,7 @@ A-r = [":reload-all", ":lsp-restart"]
 A-z = ":toggle-option soft-wrap.enable"
 C-q = ":buffer-close"
 f = ":format"
+ret = [":run-shell-command basename $(pwd)"]
 w = ":u"
 
 [keys.select]
