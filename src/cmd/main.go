@@ -11,9 +11,11 @@ import (
 	"github.com/irdaislakhuafa/go-sdk-starter/src/business/usecase"
 	entitygen "github.com/irdaislakhuafa/go-sdk-starter/src/entity/gen"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/rest"
+	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/scheduller"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/config"
-	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/connection"
+	"github.com/irdaislakhuafa/go-sdk/db"
 	"github.com/irdaislakhuafa/go-sdk/log"
+	"github.com/irdaislakhuafa/go-sdk/querybuilder/sqlc"
 	"github.com/irdaislakhuafa/go-sdk/smtp"
 	"github.com/irdaislakhuafa/go-sdk/storage"
 )
@@ -23,14 +25,10 @@ const (
 )
 
 func main() {
+	ctx := context.Background()
+
 	// read config file
 	cfg, err := config.ReadFileJSON(configFileJSON)
-	if err != nil {
-		panic(err)
-	}
-
-	// initialize db
-	db, err := connection.InitMySQL(cfg)
 	if err != nil {
 		panic(err)
 	}
@@ -38,28 +36,47 @@ func main() {
 	// initialize log
 	l := log.Init(cfg.Log)
 
+	// initialize db
+	db, err := db.Init(cfg.DB.Master)
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+	l.Info(ctx, "Initialize db...")
+
 	// initialize validator
 	v := validator.New(
 		validator.WithRequiredStructEnabled(),
 	)
+	l.Info(ctx, "Initialize validator...")
 
 	// initialize storage client
 	s, err := storage.Init(cfg.Storage)
 	if err != nil {
 		panic(err)
 	}
+	l.Info(ctx, "Initialize storage...")
 
 	// initialize queries
-	q := entitygen.New(db)
+	q := entitygen.New(sqlc.Wrap(db))
+	l.Info(ctx, "Initialize query...")
 
 	// initialize smtp
 	smtpGoMail := smtp.InitGoMail(cfg.SMTP)
+	l.Info(ctx, "Initialize smtp...")
 
 	// initialize domain
 	dom := domain.Init(l, q, db, s)
+	l.Info(ctx, "Initialize domain...")
 
 	// initialize usecase
 	uc := usecase.Init(l, cfg, v, dom, smtpGoMail, s)
+	l.Info(ctx, "Initialize usecase...")
+
+	// initialize scheduller
+	sch := scheduller.Init(l, cfg, uc)
+	l.Info(ctx, "Initialize scheduller...")
+	sch.Run()
 
 	// choose running mode
 	mode := flag.String("mode", "rest", "Please select running mode: [rest, gql, grpc]")

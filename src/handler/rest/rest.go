@@ -38,7 +38,8 @@ func Init(cfg config.Config, log log.Interface, uc *usecase.Usecase) Interface {
 			config.APP_MODE_PROD: true,
 		}
 		svr := fiber.New(fiber.Config{
-			Prefork: preforks[cfg.Fiber.Mode], // enable multi processes for better performance
+			Prefork:               preforks[cfg.Fiber.Mode], // enable multi processes for better performance
+			DisableStartupMessage: true,
 		})
 
 		r = &rest{

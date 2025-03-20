@@ -16,7 +16,7 @@ type (
 	}
 )
 
-func Init(log log.Interface, cfg config.Config, val *validator.Validate, dom *domain.Domain, smtpGoMail smtp.GoMailInterface, storage storage.Interface) *Usecase {
+func Init(log log.Interface, cfg config.Config, val *validator.Validate, dom *domain.Domain, smtpGoMail smtp.Interface, storage storage.Interface) *Usecase {
 	return &Usecase{
 		Todo: todo.Init(log, cfg, val, dom),
 	}

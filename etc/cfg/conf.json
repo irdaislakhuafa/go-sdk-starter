@@ -35,12 +35,15 @@
   },
   "DB": {
     "Master": {
+      "Driver": "mysql",
       "Username": "root",
       "Password": "",
       "Host": "127.0.0.1",
       "Port": "3306",
       "Name": "starter_app",
-      "Ssl": false
+      "Options": {
+        "SSLMode": "disable"
+      }
     }
   },
   "SMTP": {

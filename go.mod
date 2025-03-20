@@ -3,11 +3,11 @@ module github.com/irdaislakhuafa/go-sdk-starter
 go 1.24.0
 
 require (
+	github.com/go-co-op/gocron/v2 v2.16.1
 	github.com/go-playground/validator/v10 v10.25.0
-	github.com/go-sql-driver/mysql v1.9.0
 	github.com/gofiber/fiber/v2 v2.52.6
 	github.com/google/uuid v1.6.0
-	github.com/irdaislakhuafa/go-sdk v0.0.25
+	github.com/irdaislakhuafa/go-sdk v0.0.32
 )
 
 require (
@@ -19,10 +19,13 @@ require (
 	github.com/go-mail/gomail v2.3.1+incompatible // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/go-sql-driver/mysql v1.9.0 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect
+	github.com/jonboulle/clockwork v0.5.0 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.16 // indirect
@@ -30,6 +33,7 @@ require (
 	github.com/minio/md5-simd v1.1.2 // indirect
 	github.com/minio/minio-go/v7 v7.0.87 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/xid v1.6.0 // indirect
 	github.com/rs/zerolog v1.31.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
