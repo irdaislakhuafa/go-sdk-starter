@@ -63,6 +63,10 @@
     "Region": "",
     "MaxRetries": 1
   },
+  "Cache": {
+    "StorageType": "memory",
+    "Dir": ""
+  },
   "Token": {
     "ExpirationMinutes": 43200
   },

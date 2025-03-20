@@ -9,10 +9,12 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/business/domain"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/business/usecase"
+	"github.com/irdaislakhuafa/go-sdk-starter/src/entity"
 	entitygen "github.com/irdaislakhuafa/go-sdk-starter/src/entity/gen"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/rest"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/scheduller"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/config"
+	"github.com/irdaislakhuafa/go-sdk/caches"
 	"github.com/irdaislakhuafa/go-sdk/db"
 	"github.com/irdaislakhuafa/go-sdk/log"
 	"github.com/irdaislakhuafa/go-sdk/querybuilder/sqlc"
@@ -57,12 +59,22 @@ func main() {
 	}
 	l.Info(ctx, "Initialize storage...")
 
+	// initialize cache
+	c, err := caches.Init[entity.Cache](caches.Config{
+		StorageType: "",
+		Dir:         "",
+	})
+	if err != nil {
+		panic(err)
+	}
+	l.Info(ctx, "Initialize cache...")
+
 	// initialize queries
 	q := entitygen.New(sqlc.Wrap(db))
 	l.Info(ctx, "Initialize query...")
 
 	// initialize smtp
-	smtpGoMail := smtp.InitGoMail(cfg.SMTP)
+	smtp := smtp.InitGoMail(cfg.SMTP)
 	l.Info(ctx, "Initialize smtp...")
 
 	// initialize domain
@@ -70,7 +82,7 @@ func main() {
 	l.Info(ctx, "Initialize domain...")
 
 	// initialize usecase
-	uc := usecase.Init(l, cfg, v, dom, smtpGoMail, s)
+	uc := usecase.Init(l, cfg, v, dom, smtp, s, c)
 	l.Info(ctx, "Initialize usecase...")
 
 	// initialize scheduller

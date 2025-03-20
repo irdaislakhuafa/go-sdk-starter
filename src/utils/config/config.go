@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 
+	"github.com/irdaislakhuafa/go-sdk/caches"
 	"github.com/irdaislakhuafa/go-sdk/codes"
 	"github.com/irdaislakhuafa/go-sdk/db"
 	"github.com/irdaislakhuafa/go-sdk/errors"
@@ -64,6 +65,7 @@ type (
 		Log      log.Config
 		DB       DB
 		Storage  storage.Config
+		Cache    caches.Config
 		Token    Token
 		Contacts Contacts
 	}
