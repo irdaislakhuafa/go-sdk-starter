@@ -1,10 +1,8 @@
 package entity
 
-import "github.com/irdaislakhuafa/go-sdk-starter/src/utils/pagination"
-
 type (
 	ListTodoParams struct {
-		pagination.Pagination
+		PaginationParams
 		IsDeleted int    `json:"is_deleted" query:"is_deleted"`
 		Search    string `json:"search" query:"search"`
 	}
