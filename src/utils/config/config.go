@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/irdaislakhuafa/go-sdk/codes"
+	"github.com/irdaislakhuafa/go-sdk/db"
 	"github.com/irdaislakhuafa/go-sdk/errors"
 	"github.com/irdaislakhuafa/go-sdk/files"
 	"github.com/irdaislakhuafa/go-sdk/log"
@@ -43,17 +44,8 @@ type (
 		}
 	}
 
-	DBTemplate struct {
-		Username string
-		Password string
-		Host     string
-		Port     string
-		Name     string
-		Ssl      bool
-	}
-
 	DB struct {
-		Master DBTemplate
+		Master db.Config
 	}
 
 	Token struct {

@@ -37,6 +37,13 @@ type (
 		CursorEnd       *string  `json:"cursorEnd"`
 	}
 
+	PaginationParams struct {
+		Limit     int    `json:"limit" query:"limit"`
+		Page      int    `json:"page" query:"page"`
+		OrderBy   string `json:"order_by" query:"order_by"`
+		OrderType string `json:"order_type" query:"order_type"`
+	}
+
 	HTTPRes struct {
 		Message    HTTPMessage `json:"message"`
 		Meta       Meta        `json:"meta"`
@@ -67,4 +74,22 @@ func GenPagination(page, limit, totalItems int, sortBy []string) Pagination {
 		CursorStart:     new(string),
 		CursorEnd:       new(string),
 	}
+}
+
+func (p *PaginationParams) Parse() error {
+	if p.Limit == 0 {
+		p.Page = 0
+		p.Limit = 15
+	} else {
+		p.Page = (p.Page * p.Limit)
+	}
+
+	if p.OrderBy == "" {
+		p.OrderBy = "id"
+	}
+	if p.OrderType == "" {
+		p.OrderType = "DESC"
+	}
+
+	return nil
 }
