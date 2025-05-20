@@ -125,5 +125,9 @@ Depends about your [docker-compose](./docker-compose.yaml) configurations.
 - [x] Setup SQL Query Builder using sqlc.
 - [x] Setup for Rest API
 - [ ] Setup for GraphQL
-- [ ] Setup for gRPC 
+- [ ] Setup for gRPC
+- [ ] Setup for WebSocket
+- [ ] Setup usecase for AI
+  - [ ] Gemini AI
+  - [ ] OpenAI ChatGPT
 - [x] Setup for Minio Object Storage
