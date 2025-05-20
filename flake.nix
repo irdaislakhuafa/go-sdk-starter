@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "A Project Starter for https://github.com/irdaislakhuafa/go-sdk.git.";
 
   inputs = {
     # nixpkgs input
