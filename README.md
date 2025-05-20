@@ -130,4 +130,9 @@ Depends about your [docker-compose](./docker-compose.yaml) configurations.
 - [ ] Setup usecase for AI
   - [ ] Gemini AI
   - [ ] OpenAI ChatGPT
+- [ ] Setup docker compose for database
+  - [ ] Setup for MySQL
+  - [ ] Setup for PostgreSQL
+  - [ ] Setup for Redis
+  - [ ] Setup for MongoDB
 - [x] Setup for Minio Object Storage
