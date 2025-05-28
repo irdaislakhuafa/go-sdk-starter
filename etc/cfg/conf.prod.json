@@ -57,6 +57,7 @@
     "BaseDir": "starter_app",
     "Host": "127.0.0.1",
     "Port": "9000",
+    "SSL": false,
     "AccessKeyID": "",
     "AccessKeySecret": "",
     "Token": "",
