@@ -64,11 +64,17 @@ func GenPagination(page, limit, totalItems int, sortBy []string) Pagination {
 		limit = totalItems
 	}
 
-	totalPages := math.Ceil(float64(totalItems) / float64(limit))
+	totalPages := math.Ceil(float64(totalItems+limit-1) / float64(limit))
+	if totalItems == 0 {
+		totalPages = 0
+	} else {
+		totalPages -= 1
+	}
+
 	return Pagination{
 		CurrentPage:     page,
 		CurrentElements: limit,
-		TotalPages:      int(totalPages) - 1,
+		TotalPages:      int(totalPages),
 		TotalElements:   totalItems,
 		SortBy:          operator.Ternary(len(sortBy) == 0, []string{"id DESC"}, sortBy),
 		CursorStart:     new(string),

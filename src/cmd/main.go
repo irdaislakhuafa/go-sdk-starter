@@ -53,24 +53,26 @@ func main() {
 	l.Info(ctx, "Initialize validator...")
 
 	// initialize storage client
-	s, err := storage.Init(cfg.Storage)
-	if err != nil {
-		panic(err)
+	var s storage.Interface
+	if cfg.Storage.AccessKeyID != "" || cfg.Storage.AccessKeySecret != "" {
+		s, err = storage.Init(cfg.Storage)
+		if err != nil {
+			panic(err)
+		}
+		l.Info(ctx, "Initialize storage...")
+	} else {
+		l.Info(ctx, "Storage config not found, skip storage initialization...")
 	}
-	l.Info(ctx, "Initialize storage...")
 
 	// initialize cache
-	c, err := caches.Init[entity.Cache](caches.Config{
-		StorageType: "",
-		Dir:         "",
-	})
+	c, err := caches.Init[entity.Cache](cfg.Cache)
 	if err != nil {
 		panic(err)
 	}
 	l.Info(ctx, "Initialize cache...")
 
 	// initialize queries
-	q := entitygen.New(sqlc.Wrap(db))
+	q := entitygen.New(sqlc.Wrap(db, sqlc.WrappedOpts{}))
 	l.Info(ctx, "Initialize query...")
 
 	// initialize smtp

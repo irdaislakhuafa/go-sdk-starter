@@ -1,10 +1,25 @@
 services:
-  app-dev:
+  app-prod:
+    image: irdaislakhuafa/go-sdk-starter:latest
+    container_name: app
     build:
       context: .
-      dockerfile: deploy/Dockerfile.dev
-    container_name: starter_app
+      dockerfile: deploy/Dockerfile
+      args:
+        - APP_ENV=prod
     ports:
       - 8001:8001
-    tty: true
     stdin_open: true
+    tty: true
+  app-dev:
+    image: irdaislakhuafa/go-sdk-starter:latest
+    container_name: app
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+      args:
+        - APP_ENV=dev
+    ports:
+      - 8001:8001
+    stdin_open: true
+    tty: true
