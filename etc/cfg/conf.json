@@ -42,7 +42,8 @@
       "Port": "3306",
       "Name": "starter_app",
       "Options": {
-        "SSLMode": "disable"
+        "SSLMode": "disable",
+        "ParseTime": true
       }
     }
   },
