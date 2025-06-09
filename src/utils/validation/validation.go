@@ -50,3 +50,21 @@ func getJSONTag(ref reflect.Type, fieldName string) string {
 
 	return tagVal
 }
+
+func Register(v *validator.Validate) error {
+	regs := []struct {
+		tag string
+		fn  func(validator.FieldLevel) bool
+	}{
+		{"maxfilesize", maxFileSize},
+		{"mimetype", mimeType},
+	}
+
+	for _, r := range regs {
+		if err := v.RegisterValidation(r.tag, r.fn); err != nil {
+			return errors.NewWithCode(codes.CodeInternalServerError, "%s", err.Error())
+		}
+	}
+
+	return nil
+}
