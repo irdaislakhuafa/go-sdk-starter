@@ -10,14 +10,16 @@ import (
 )
 
 var customMessages = map[string]string{
-	"required": "Field '{{ .Field }}' is required",
-	"email":    "Field '{{ .Field }}' must be a valid email format",
-	"max":      "Field '{{ .Field }}' cannot exceed {{ .Param }} characters",
-	"min":      "Field '{{ .Field }}' must be at least {{ .Param }} characters",
-	"gte":      "Field '{{ .Field }}' must be greater than or equal to {{ .Param }}",
-	"lte":      "Field '{{ .Field }}' must be less than or equal to {{ .Param }}",
-	"oneof":    "Field '{{ .Field }}' must be one of [{{ .Param }}]",
-	"number":   "Field '{{ .Field }}' must be a number format",
+	"required":    "Field '{{ .Field }}' is required",
+	"email":       "Field '{{ .Field }}' must be a valid email format",
+	"max":         "Field '{{ .Field }}' cannot exceed {{ .Param }} characters",
+	"min":         "Field '{{ .Field }}' must be at least {{ .Param }} characters",
+	"gte":         "Field '{{ .Field }}' must be greater than or equal to {{ .Param }}",
+	"lte":         "Field '{{ .Field }}' must be less than or equal to {{ .Param }}",
+	"oneof":       "Field '{{ .Field }}' must be one of [{{ .Param }}]",
+	"number":      "Field '{{ .Field }}' must be a number format",
+	"maxfilesize": "Field '{{ .Field }}' file size cannot exceeded {{ .Param }}",
+	"mimetype":    "Field '{{ .Field }}' type should be one of [{{ .Param }}]",
 }
 
 func ExtractError(err error, val any) error {
