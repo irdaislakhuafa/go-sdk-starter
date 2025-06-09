@@ -14,6 +14,7 @@ import (
 	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/rest"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/handler/scheduller"
 	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/config"
+	"github.com/irdaislakhuafa/go-sdk-starter/src/utils/validation"
 	"github.com/irdaislakhuafa/go-sdk/caches"
 	"github.com/irdaislakhuafa/go-sdk/db"
 	"github.com/irdaislakhuafa/go-sdk/log"
@@ -47,9 +48,11 @@ func main() {
 	l.Info(ctx, "Initialize db...")
 
 	// initialize validator
-	v := validator.New(
-		validator.WithRequiredStructEnabled(),
-	)
+	v := validator.New(validator.WithRequiredStructEnabled())
+	if err := validation.Register(v); err != nil {
+		panic(err)
+	}
+
 	l.Info(ctx, "Initialize validator...")
 
 	// initialize storage client
