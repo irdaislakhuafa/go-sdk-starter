@@ -6,8 +6,8 @@ cloud:
 servers: []
 sql:
     - engine: mysql
-      queries: docs/sql/queries.sql
-      schema: docs/sql/schema.sql
+      queries: docs/sql/*queries.sql
+      schema: docs/sql/*schema.sql
       gen:
         go:
           package: entitygen
