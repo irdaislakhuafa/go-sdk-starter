@@ -31,7 +31,19 @@
     }
   },
   "Log": {
-    "Level": "debug"
+    "Level": "debug",
+    "SkipFrameCount": 3,
+    "Storage": {
+      "Driver": "FILE",
+      "FileLocation": "./logs/log.json",
+      "Rotation": {
+        "Enable": true,
+        "MaxSize": 100,
+        "MaxBackups": 3,
+        "MaxAge": 30,
+        "Compress": true
+      }
+    }
   },
   "DB": {
     "Master": {
@@ -74,5 +86,8 @@
   "Contacts": {
     "Name": "",
     "Email": ""
+  },
+  "Scheduller": {
+    "Enable": true
   }
 }
