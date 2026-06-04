@@ -35,7 +35,7 @@
     "SkipFrameCount": 3,
     "Storage": {
       "Driver": "FILE",
-      "FileLocation": "./logs/log.json",
+      "FileLocation": "./tmp/logs/log.json",
       "Rotation": {
         "Enable": true,
         "MaxSize": 100,
