@@ -38,15 +38,17 @@ func Init(log log.Interface, cfg config.Config, uc *usecase.Usecase) Interface {
 
 func (s *scheduller) Run() {
 	var err error
-	once.Do(func() {
-		s.cron, err = gocron.NewScheduler()
-		if err != nil {
-			panic(err)
-		}
+	if s.cfg.Scheduler.Enable {
+		once.Do(func() {
+			s.cron, err = gocron.NewScheduler()
+			if err != nil {
+				panic(err)
+			}
 
-		s.Register()
-		s.cron.Start()
-	})
+			s.Register()
+			s.cron.Start()
+		})
+	}
 }
 
 func (s *scheduller) Register() {

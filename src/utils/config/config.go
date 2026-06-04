@@ -58,16 +58,21 @@ type (
 		Email string
 	}
 
+	Scheduller struct {
+		Enable bool
+	}
+
 	Config struct {
-		Meta     Meta
-		Fiber    Fiber
-		SMTP     smtp.Config
-		Log      log.Config
-		DB       DB
-		Storage  storage.Config
-		Cache    caches.Config
-		Token    Token
-		Contacts Contacts
+		Meta      Meta
+		Fiber     Fiber
+		SMTP      smtp.Config
+		Log       log.Config
+		DB        DB
+		Storage   storage.Config
+		Cache     caches.Config
+		Token     Token
+		Contacts  Contacts
+		Scheduler Scheduller
 	}
 )
 

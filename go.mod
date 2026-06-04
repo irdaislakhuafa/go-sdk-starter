@@ -7,7 +7,7 @@ require (
 	github.com/go-playground/validator/v10 v10.25.0
 	github.com/gofiber/fiber/v2 v2.52.6
 	github.com/google/uuid v1.6.0
-	github.com/irdaislakhuafa/go-sdk v0.0.36-pre6
+	github.com/irdaislakhuafa/go-sdk v0.0.37-pre5
 )
 
 require (
@@ -45,4 +45,5 @@ require (
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 )
